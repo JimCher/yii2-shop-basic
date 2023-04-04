@@ -74,13 +74,17 @@ $this->title = 'Home | Shop';
     </div>
 </section><!--/slider-->
 
+<ul class="catalog">
+    <?= MenuWidget::widget(['tmpl'=>'menu']) ?>
+</ul>
+
 <section>
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
                     <h2>Category</h2>
-                    <?= MenuWidget::widget(['tmpl'=>'menu']) ?>
+
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
                         <div class="panel panel-default">
                             <div class="panel-heading">
