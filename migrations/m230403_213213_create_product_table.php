@@ -25,6 +25,21 @@ class m230403_213213_create_product_table extends Migration
             'new' => 'ENUM("0","1") NOT NULL DEFAULT "0"',
             'sale' => 'ENUM("0","1") NOT NULL DEFAULT "0"',
         ]);
+
+        $this->createIndex(
+            'idx-product-category_id',
+            'category',
+            'category_id'
+        );
+
+        $this->addForeignKey(
+            'fk-product-category_id',
+            'product',
+            'category_id',
+            'category',
+            'id',
+            'CASCADE'
+        );
     }
 
     /**
