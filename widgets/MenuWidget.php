@@ -30,11 +30,16 @@ class MenuWidget extends Widget
 
     public function run()
     {
-        $this->data = Category::find()->indexBy('id')->asArray()->all();
-        $this->tree = $this->getTree();
-        $this->menuHtml = $this->getMenuHtml($this->tree);
+        $menu = \Yii::$app->cache->getOrSet('menu', function (){
+            $this->data = Category::find()->indexBy('id')->asArray()->all();
+            $this->tree = $this->getTree();
+            $this->menuHtml = $this->getMenuHtml($this->tree);
+
+            return $this->menuHtml;
+        }, 3600);
+
 //        debug($this->data);
-        return $this->menuHtml;
+        return $menu;
     }
 
     protected function getTree()
