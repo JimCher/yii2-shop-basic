@@ -1,7 +1,8 @@
 <?php
 
 use app\widgets\MenuWidget;
-use yii\helpers\Html; ?>
+use yii\helpers\Html;
+use yii\widgets\LinkPager; ?>
 
 <section id="advertisement">
     <div class="container">
@@ -54,70 +55,71 @@ use yii\helpers\Html; ?>
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center"><?= $category->name ?></h2>
                     <div class="row">
-                    <?php
-                    if (!empty($products)): ?>
                         <?php
-                        foreach ($products as $product): ?>
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <?= Html::img(
-                                                "@web/images/products/{$product['img']}",
-                                                ['alt' => $product['name']]
-                                            ) ?>
-                                            <h2>$<?= $product['price'] ?></h2>
-                                            <p><?= $product['name'] ?></p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        <div class="product-overlay">
-                                            <div class="overlay-content">
+                        if (!empty($products)): ?>
+                            <?php
+                            foreach ($products as $product): ?>
+                                <div class="col-sm-4">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <?= Html::img(
+                                                    "@web/images/products/{$product['img']}",
+                                                    ['alt' => $product['name']]
+                                                ) ?>
                                                 <h2>$<?= $product['price'] ?></h2>
                                                 <p><?= $product['name'] ?></p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i
                                                             class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
+                                            <div class="product-overlay">
+                                                <div class="overlay-content">
+                                                    <h2>$<?= $product['price'] ?></h2>
+                                                    <p><?= $product['name'] ?></p>
+                                                    <a href="#" class="btn btn-default add-to-cart"><i
+                                                                class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                </div>
+                                            </div>
+                                            <?php
+                                            if ($product['new']) {
+                                                $typeImage = 'new.png';
+                                            } elseif ($product['sale']) {
+                                                $typeImage = 'sale.png';
+                                            } ?>
+                                            <?php
+                                            if (isset($typeImage)): ?>
+                                                <?= Html::img(
+                                                    "@web/images/home/{$typeImage}",
+                                                    [
+                                                        'alt' => '',
+                                                        'class' => 'new'
+                                                    ]
+                                                ) ?>
+                                            <?php
+                                            endif; ?>
                                         </div>
-                                        <?php
-                                        if ($product['new']) {
-                                            $typeImage = 'new.png';
-                                        } elseif ($product['sale']) {
-                                            $typeImage = 'sale.png';
-                                        } ?>
-                                        <?php
-                                        if (isset($typeImage)): ?>
-                                            <?= Html::img(
-                                                "@web/images/home/{$typeImage}",
-                                                [
-                                                    'alt' => '',
-                                                    'class' => 'new'
-                                                ]
-                                            ) ?>
-                                        <?php
-                                        endif; ?>
-                                    </div>
-                                    <div class="choose">
-                                        <ul class="nav nav-pills nav-justified">
-                                            <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                            <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                        </ul>
+                                        <div class="choose">
+                                            <ul class="nav nav-pills nav-justified">
+                                                <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                                <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php
+                            endforeach; ?>
+                            <div class="clearfix"></div>
+                            <?php
+                            echo LinkPager::widget(
+                                [
+                                    'pagination' => $pages,
+                                ]
+                            ); ?>
                         <?php
-                        endforeach; ?>
-                        <ul class="pagination">
-                            <li class="active"><a href="">1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a href="">3</a></li>
-                            <li><a href="">&raquo;</a></li>
-                        </ul>
-                    <?php
-                    else: ?>
-                        <h2 class="text-center">No items for now</h2>
-                    <?php
-                    endif; ?>
+                        else: ?>
+                            <h2 class="text-center">No items for now</h2>
+                        <?php
+                        endif; ?>
                     </div>
 
                 </div><!--features_items-->
