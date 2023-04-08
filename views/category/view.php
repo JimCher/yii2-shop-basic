@@ -52,7 +52,7 @@ use yii\helpers\Html; ?>
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Features Items</h2>
+                    <h2 class="title text-center"><?= $category->name ?></h2>
                     <div class="row">
                     <?php
                     if (!empty($products)): ?>
@@ -107,18 +107,19 @@ use yii\helpers\Html; ?>
                             </div>
                         <?php
                         endforeach; ?>
+                        <ul class="pagination">
+                            <li class="active"><a href="">1</a></li>
+                            <li><a href="">2</a></li>
+                            <li><a href="">3</a></li>
+                            <li><a href="">&raquo;</a></li>
+                        </ul>
                     <?php
                     else: ?>
-                        <h2>No items for now</h2>
+                        <h2 class="text-center">No items for now</h2>
                     <?php
                     endif; ?>
                     </div>
-                    <ul class="pagination">
-                        <li class="active"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">&raquo;</a></li>
-                    </ul>
+
                 </div><!--features_items-->
             </div>
         </div>

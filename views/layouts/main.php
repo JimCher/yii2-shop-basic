@@ -69,7 +69,7 @@ $this->beginPage() ?>
                             <?= Html::a(
                                 Html::img('@web/images/home/logo.png', ['alt' => ''])
                                 ,
-                                ['/index.html']
+                                ['/index']
                             ) ?>
                         </div>
                         <div class="btn-group pull-right">

@@ -5,7 +5,6 @@
 use app\widgets\MenuWidget;
 use yii\helpers\Html;
 
-$this->title = 'Home | Shop';
 ?>
 <section id="slider"><!--slider-->
     <div class="container">
