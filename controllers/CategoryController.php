@@ -16,4 +16,12 @@ class CategoryController extends AppContoller
             'hits' => $hits
         ]);
     }
+
+    public function actionView($id = null){
+        $products = Product::find()->where('category_id=:id',[':id'=> $id])->asArray()->all();
+
+        return $this->render('view', [
+            'products'=>$products
+        ]);
+    }
 }
