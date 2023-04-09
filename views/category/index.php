@@ -136,19 +136,22 @@ use yii\helpers\Html;
                                                 ['alt' => $hit['name']]
                                             ) ?>
                                             <h2>$<?= $hit['price'] ?></h2>
-                                            <p><?= $hit['name'] ?></p>
+                                            <p><?= Html::a(
+                                                    $hit['name'],
+                                                    ['product/view', 'id' => $hit['id']]
+                                                ) ?></p>
                                             <a href="#" class="btn btn-default add-to-cart"><i
                                                         class="fa fa-shopping-cart"></i>Add
                                                 to cart</a>
                                         </div>
-                                        <div class="product-overlay">
-                                            <div class="overlay-content">
-                                                <h2>$<?= $hit['price'] ?></h2>
-                                                <p><?= $hit['name'] ?></p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i
-                                                            class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                        </div>
+<!--                                        <div class="product-overlay">-->
+<!--                                            <div class="overlay-content">-->
+<!--                                                <h2>$--><?//= $hit['price'] ?><!--</h2>-->
+<!--                                                <p>--><?//= $hit['name'] ?><!--</p>-->
+<!--                                                <a href="#" class="btn btn-default add-to-cart"><i-->
+<!--                                                            class="fa fa-shopping-cart"></i>Add to cart</a>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
                                         <?php
                                         if ($hit['new']) {
                                             $typeImage = 'new.png';

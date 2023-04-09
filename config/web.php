@@ -53,6 +53,7 @@ $config = [
                 'category/<id:\d+>/page-<page:\d+>'=>'category/view',
                 'category/<id:\d+>'=>'category/view',
                 '<action:(index)>' => 'category/<action>',
+                'product/<id:\d+>'=>'product/view',
             ],
         ],
 

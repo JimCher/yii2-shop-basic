@@ -68,18 +68,23 @@ use yii\widgets\LinkPager; ?>
                                                     ['alt' => $product['name']]
                                                 ) ?>
                                                 <h2>$<?= $product['price'] ?></h2>
-                                                <p><?= $product['name'] ?></p>
+                                                <p><?= Html::a(
+                                                        $product['name'],
+                                                        ['product/view', 'id' => $product['id']]
+                                                    ) ?></p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i
                                                             class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                            <div class="product-overlay">
-                                                <div class="overlay-content">
-                                                    <h2>$<?= $product['price'] ?></h2>
-                                                    <p><?= $product['name'] ?></p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i
-                                                                class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-                                            </div>
+                                            <!--                                            <div class="product-overlay">-->
+                                            <!--                                                <div class="overlay-content">-->
+                                            <!--                                                    <h2>$-->
+                                            <?//= $product['price'] ?><!--</h2>-->
+                                            <!--                                                    <p>-->
+                                            <?//= $product['name'] ?><!--</p>-->
+                                            <!--                                                    <a href="#" class="btn btn-default add-to-cart"><i-->
+                                            <!--                                                                class="fa fa-shopping-cart"></i>Add to cart</a>-->
+                                            <!--                                                </div>-->
+                                            <!--                                            </div>-->
                                             <?php
                                             if ($product['new']) {
                                                 $typeImage = 'new.png';
