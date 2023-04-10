@@ -27,6 +27,9 @@ class CategoryController extends AppContoller
     public function actionView($id = null)
     {
         $category = Category::findOne(['id=:id', ['id' => $id]]);
+        if (empty($category))
+            throw new \yii\web\HttpException(404, "There is no {$id} category");
+
         $this->setMetaTags('E-Shop | ' . $category->name, $category->keywords, $category->description);
 
 //        $products = Product::find()->where('category_id=:id',[':id'=> $id])->asArray()->all();
