@@ -6,7 +6,9 @@
 
 use app\assets\AppAsset;
 use app\assets\LtAppAsset;
+use app\models\SearchForm;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 AppAsset::register($this);
 LtAppAsset::register($this);
@@ -17,7 +19,9 @@ $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, 
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
 $this->registerMetaTag(['name' => 'author', 'content' => $this->params['meta_author'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
-$this->registerLinkTag(['rel' => 'shortcut icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/images/ico/favicon.ico')]);
+$this->registerLinkTag(
+    ['rel' => 'shortcut icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/images/ico/favicon.ico')]
+);
 ?>
 <?php
 $this->beginPage() ?>
@@ -151,7 +155,22 @@ $this->beginPage() ?>
                     </div>
                     <div class="col-sm-3">
                         <div class="search_box pull-right">
-                            <input type="text" placeholder="Search"/>
+                            <?php
+                            $model = new SearchForm();
+                            $form = ActiveForm::begin(
+                                [
+                                    'id' => 'searchForm',
+                                    'action' => ['category/search'],
+                                    'method' => 'GET',
+                                    'enableClientValidation'=>false
+                                ]
+                            ); ?>
+                            <?= $form->field($model, 'query')
+                                ->textInput()
+                                ->input('text', ['placeholder' => "Search",'class'=>''])
+                                ->label(false); ?>
+                            <?php
+                            ActiveForm::end(); ?>
                         </div>
                     </div>
                 </div>

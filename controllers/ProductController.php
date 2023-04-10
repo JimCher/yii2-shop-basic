@@ -22,4 +22,5 @@ class ProductController extends AppContoller
         return $this->render('view', compact('product', 'hits'));
     }
 
+
 }

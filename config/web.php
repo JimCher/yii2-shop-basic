@@ -54,6 +54,7 @@ $config = [
                 'category/<id:\d+>'=>'category/view',
                 '<action:(index)>' => 'category/<action>',
                 'product/<id:\d+>'=>'product/view',
+                'search/<s:\w+>'=>'category/search'
             ],
         ],
 
