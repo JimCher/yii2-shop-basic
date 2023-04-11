@@ -22,7 +22,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
-        'js/jquery.js',
+//        'js/jquery.js',
         'js/bootstrap.min.js',
         'js/jquery.scrollUp.min.js',
         'js/price-range.js',
@@ -32,7 +32,7 @@ class AppAsset extends AssetBundle
         'js/main.js',
     ];
     public $depends = [
-//        'yii\web\YiiAsset',
+        'yii\web\YiiAsset',
 //        'yii\bootstrap4\BootstrapAsset',
 //        'yii\bootstrap4\BootstrapPluginAsset'
     ];

@@ -8,7 +8,6 @@ $('.catalog').dcAccordion({
 
 $('.add-to-cart').on('click', function (e){
     e.preventDefault();
-    console.log(12)
     let id = $(this).data('id');
     let crsfToken = $('meta[name="csrf-token"]').attr("content");
     $.ajax({
