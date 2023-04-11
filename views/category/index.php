@@ -140,18 +140,12 @@ use yii\helpers\Html;
                                                     $hit['name'],
                                                     ['product/view', 'id' => $hit['id']]
                                                 ) ?></p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>Add
-                                                to cart</a>
+                                            <?= Html::a('
+                                                <i class="fa fa-shopping-cart"></i>Add to cart',
+                                                        ['cart/add', 'id'=>$hit['id']],
+                                                        ['class'=>'btn btn-default add-to-cart',
+                                                            'data-id'=>$hit['id']]) ?>
                                         </div>
-<!--                                        <div class="product-overlay">-->
-<!--                                            <div class="overlay-content">-->
-<!--                                                <h2>$--><?//= $hit['price'] ?><!--</h2>-->
-<!--                                                <p>--><?//= $hit['name'] ?><!--</p>-->
-<!--                                                <a href="#" class="btn btn-default add-to-cart"><i-->
-<!--                                                            class="fa fa-shopping-cart"></i>Add to cart</a>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
                                         <?php
                                         if ($hit['new']) {
                                             $typeImage = 'new.png';
