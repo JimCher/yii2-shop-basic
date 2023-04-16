@@ -109,11 +109,12 @@ use yii\helpers\Html; ?>
                             <span>
 									<span>US $<?= $product['price'] ?></span>
 									<label>Quantity:</label>
-									<input type="text" value="3"/>
-									<button type="button" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
-										Add to cart
-									</button>
+									<input id="qty" type="text" value="1"/>
+                                     <?= Html::a('
+                                                <i class="fa fa-shopping-cart"></i>Add to cart',
+                                            ['cart/add', 'id'=>$product['id']],
+                                            ['class'=>'btn btn-default cart add-to-cart',
+                                                'data-id'=>$product['id']]) ?>
 								</span>
                             <p><b>Availability:</b> In Stock</p>
                             <p><b>Condition:</b> New</p>

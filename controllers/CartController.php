@@ -8,14 +8,18 @@ use Yii;
 
 class CartController extends AppContoller
 {
-    public function actionAdd($id){
+    public function actionAdd(int $id, int $qty = null){
         $product = Product::find()->where('id=:id',[':id'=>$id])->asArray()->limit(1)->one();
         if (empty($product)) return false;
 
         $session = Yii::$app->session;
         $session->open();
         $cart = new Cart();
-        $cart->addToCart($product);
+        $cart->addToCart($product, $qty);
+
+        if (!Yii::$app->request->isAjax){
+            return $this->redirect(Yii::$app->request->referrer);
+        }
 
         $this->layout = false;
         return $this->render('cart-modal', compact('session'));
@@ -48,5 +52,9 @@ class CartController extends AppContoller
 
         $this->layout = false;
         return $this->render('cart-modal', compact('session'));
+    }
+
+    public function actionView(){
+        return $this->render('view');
     }
 }

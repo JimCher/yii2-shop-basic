@@ -10,6 +10,7 @@ use app\models\SearchForm;
 
 use yii\bootstrap\Modal;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 AppAsset::register($this);
@@ -351,7 +352,7 @@ $this->beginPage() ?>
             'header' => '<h2> Your Cart </h2>',
             'size'=>'modal-lg',
             'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal">Continue shopping</button>
-        <button type="button" class="btn btn-success">Make order</button>
+        <a href="'. Url::to(['cart/view']).'" type="button" class="btn btn-success">Make order</a>
          <button type="button" class="btn btn-danger" onclick="clearCart()">Clear cart</button>'
             
         ]

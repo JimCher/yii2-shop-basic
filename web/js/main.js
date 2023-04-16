@@ -66,12 +66,14 @@ function getCart() {
 $('.add-to-cart').on('click', function (e) {
     e.preventDefault();
     let id = $(this).data('id');
+    let qty = $('#qty').val();
     let crsfToken = $('meta[name="csrf-token"]').attr("content");
     $.ajax({
         url: '/cart/add',
         data: {
             _crsf: crsfToken,
-            id: id
+            id: id,
+            qty: qty
         },
         type: 'GET',
         success: function (res) {

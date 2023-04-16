@@ -72,8 +72,11 @@ use yii\widgets\LinkPager; ?>
                                                         $product['name'],
                                                         ['product/view', 'id' => $product['id']]
                                                     ) ?></p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i
-                                                            class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                <?= Html::a('
+                                                <i class="fa fa-shopping-cart"></i>Add to cart',
+                                                            ['cart/add', 'id'=>$product['id']],
+                                                            ['class'=>'btn btn-default  add-to-cart',
+                                                                'data-id'=>$product['id']]) ?>
                                             </div>
                                             <?php
                                             if ($product['new']) {
