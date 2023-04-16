@@ -7,6 +7,8 @@
 use app\assets\AppAsset;
 use app\assets\LtAppAsset;
 use app\models\SearchForm;
+
+use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -20,7 +22,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => $this->params['met
 $this->registerMetaTag(['name' => 'author', 'content' => $this->params['meta_author'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
 $this->registerLinkTag(
-    ['rel' => 'shortcut icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/images/ico/favicon.ico')]
+    ['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]
 );
 ?>
 <?php
@@ -162,12 +164,12 @@ $this->beginPage() ?>
                                     'id' => 'searchForm',
                                     'action' => ['category/search'],
                                     'method' => 'GET',
-                                    'enableClientValidation'=>false
+                                    'enableClientValidation' => false
                                 ]
                             ); ?>
                             <?= $form->field($model, 'query')
                                 ->textInput()
-                                ->input('text', ['placeholder' => "Search",'class'=>''])
+                                ->input('text', ['placeholder' => "Search", 'class' => ''])
                                 ->label(false); ?>
                             <?php
                             ActiveForm::end(); ?>
@@ -339,6 +341,20 @@ $this->beginPage() ?>
 
     </footer><!--/Footer-->
 
+    <?php
+    Modal::begin(
+        [
+            'id' => 'cart',
+            'header' => '<h2> Your Cart </h2>',
+            'size'=>'modal-lg',
+            'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal">Continue shopping</button>
+        <button type="button" class="btn btn-success">Make order</button>
+         <button type="button" class="btn btn-danger" onclick="clearCart()">Clear cart</button>'
+            
+        ]
+    );
+
+    Modal::end(); ?>
     <?php
     $this->endBody() ?>
     </body>

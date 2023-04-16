@@ -10,8 +10,7 @@ Yii2 Shop system
 
 ## Features
  - PHP >= 7.4
- - Bootstrap 4
- - Template on Bootstrap 3 (for now)
+ - Template on Bootstrap 3
 
 ## Installation
 1. Clone the repository

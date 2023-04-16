@@ -12,7 +12,6 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/bootstrap.min.css',
         'css/font-awesome.min.css',
         'css/prettyPhoto.css',
         'css/price-range.css',
@@ -22,8 +21,6 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
-//        'js/jquery.js',
-        'js/bootstrap.min.js',
         'js/jquery.scrollUp.min.js',
         'js/price-range.js',
         'js/jquery.prettyPhoto.js',
@@ -33,7 +30,7 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-//        'yii\bootstrap4\BootstrapAsset',
-//        'yii\bootstrap4\BootstrapPluginAsset'
+//        'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\BootstrapPluginAsset'
     ];
 }
