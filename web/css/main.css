@@ -1160,6 +1160,10 @@ h2.title {
 *******Product Details CSS******
 **************************/
 
+.del-item{
+    cursor: pointer;
+}
+
 .product-details {
     overflow: hidden;
 }

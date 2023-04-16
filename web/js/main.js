@@ -6,16 +6,16 @@ $('.catalog').dcAccordion({
     speed: 300
 });
 
-function showCart(cart){
+function showCart(cart) {
     $('#cart .modal-body').html(cart);
     $('#cart').modal();
 }
 
-function clearCart(){
+function clearCart() {
     $.ajax({
         url: '/cart/clear-cart',
         type: 'GET',
-        success: function (res){
+        success: function (res) {
             if (!res) alert('Error!')
             showCart(res);
         },
@@ -25,7 +25,45 @@ function clearCart(){
     });
 }
 
-$('.add-to-cart').on('click', function (e){
+
+function getCart() {
+
+    $.ajax({
+        url: '/cart/get-cart',
+        type: 'GET',
+        success: function (res) {
+            if (!res) alert('Error!')
+            showCart(res);
+        },
+        error: function () {
+            alert('Error!')
+        }
+    });
+
+    return false
+}
+
+ $('#cart .modal-body').on('click', '.del-item', function (){
+     let crsfToken = $('meta[name="csrf-token"]').attr("content");
+     let id = $(this).data('id');
+     $.ajax({
+         url: '/cart/delete-item',
+         data: {
+             _crsf: crsfToken,
+             id: id
+         },
+         type: 'GET',
+         success: function (res) {
+             if (!res) alert('Error!')
+             showCart(res);
+         },
+         error: function () {
+             alert('Error!')
+         }
+     });
+ });
+
+$('.add-to-cart').on('click', function (e) {
     e.preventDefault();
     let id = $(this).data('id');
     let crsfToken = $('meta[name="csrf-token"]').attr("content");
@@ -36,9 +74,8 @@ $('.add-to-cart').on('click', function (e){
             id: id
         },
         type: 'GET',
-        success: function (res){
+        success: function (res) {
             if (!res) alert('Error!')
-            console.log(res)
             showCart(res);
         },
         error: function () {
@@ -53,7 +90,7 @@ var RGBChange = function () {
 
 /*scroll to top*/
 
-$(document).ready(function(){
+$(document).ready(function () {
     $(function () {
         $.scrollUp({
             scrollName: 'scrollUp', // Element ID
